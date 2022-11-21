@@ -16,7 +16,39 @@ console.log(
 		figlet.textSync('ACER-Report', { horizontalLayout: 'half'})
 	)
 );
+const repository = new StudentRepository("students");
+const readLine = readline.createInterface({input, output, terminal: false});
+askForStudentID();
 
-export function add(value1: number, value2: number): number {
-	return value1 + value2;
+function askForStudentID(): void {
+	readLine.question("Student ID: ", (answer: string) => {
+		let student: Student = repository.findWithID(answer);	
+		if(student === undefined) {
+			//console.log("Your Student ID could not be found. Please try again.\n");
+			console.log(chalk.red("Your Student ID could not be found. Please try again.\n"));
+			askForStudentID();
+		} else {
+			askForReportType(student);
+		}
+	});
+}
+
+function askForReportType(student: Student): void {
+	readLine.question("Report to generate (1 for Diagnostic, 2 for Progress, 3 for Feedback): ", (answer: string) => {
+		if(answer === "2") {
+			let progressWorker = new ProgressService();
+			progressWorker.generateReport(student);
+			askForStudentID();
+		} else if(answer === "3") {
+			let feedbackWorker = new FeedbackService();
+			feedbackWorker.generateReport(student);
+			askForStudentID();
+		} else if(answer == "1") {
+			console.log(chalk.yellow("This feature is still under development. Check back soon or try another report."));
+			askForReportType(student);
+		} else {
+			console.log(chalk.yellow("Report not recognised. Please try again."));
+			askForReportType(student);
+		}
+	})
 }
