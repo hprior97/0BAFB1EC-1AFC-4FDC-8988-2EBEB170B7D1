@@ -44,4 +44,4 @@ At the time of publishing, the `Diagnostic` Report is not yet available.
 
 Written by Hamish Prior.  
 0404 826 691  
-[hamish@5levels.net](mailto:hamish@5levels.net)
+[hamishprior@me.com](mailto:hamishprior@me.com)
