@@ -1,10 +1,10 @@
 export interface Assessment {
 	id: string, 
 	name: string, 
-	questions: AssessmentQuestion[]
+	questions: AssessmentQuestion[];
 }
 
 interface AssessmentQuestion {
-	questoinId: string, 
+	questionId: string, 
 	position: number
 }
