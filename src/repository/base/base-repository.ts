@@ -15,19 +15,19 @@ export abstract class BaseRepository<T> implements Read<T> {
 	constructor(collectionName: string) {
 		switch (collectionName) {
 			case "students": {
-				this._collection = students;
+				this._collection = students as Student[];
 				break;
 			}
 			case "questions": {
-				this._collection = questions;
+				this._collection = questions as Question[];
 				break;
 			}
 			case "responses": {
-				this._collection = responses;
+				this._collection = responses as StudentResponse[];
 				break;
 			}
 			default: {
-				this._collection = assessments;
+				this._collection = assessments as Assessment[];
 				break;
 			}
 			
