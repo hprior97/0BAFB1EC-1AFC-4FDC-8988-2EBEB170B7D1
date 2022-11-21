@@ -9,8 +9,7 @@ export class FeedbackService {
 	
 	constructor() { }
 	
-	genReport(student: Student): void {
-		
+	generateReport(student: Student): void {
 		let responseRepository = new ResponseRepository("responses");
 		
 		//Find the recent completed assessments, with required assessmentdata. See response-repository.ts
@@ -31,7 +30,6 @@ export class FeedbackService {
 		for(let fullResponse of fullResponseData) {
 			this.outputReportData(student, fullResponse);
 		}
-		
 	}
 	
 	outputReportData(student: Student, feedbackData: FeedbackData): void {
@@ -54,7 +52,6 @@ export class FeedbackService {
 			questionStrings.push("Hint: " + incorrectQuestion.config.hint + "\n");
 			let questionDetailString = questionStrings.join("\n");
 			console.log(questionDetailString);
-			
 		}
 	}
 	
