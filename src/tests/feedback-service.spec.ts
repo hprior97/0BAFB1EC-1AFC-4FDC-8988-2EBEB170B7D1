@@ -89,5 +89,14 @@ describe("get incorrect question", () => {
 	it("Should return a Question[]", () => {
 		expect(feedbackWorker.getIncorrectQuestionDataForResponse(testStudentResponse)).toBeDefined();
 	});
+	
+	it("Should only call getIncorrectQuestionDataForResponse() once", () => {
+		let callCountSpy = spyOn(feedbackWorker, 'getIncorrectQuestionDataForResponse');
+		//feedbackWorker.genReport(testStudent);
+		feedbackWorker.getIncorrectQuestionDataForResponse(testStudentResponse);
+		expect(callCountSpy.calls.count()).toBeGreaterThan(0);
+		
+	})
 
 });
+
