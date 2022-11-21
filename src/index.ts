@@ -3,17 +3,17 @@ import { ProgressService } from './services/progress-service';
 import { FeedbackService } from './services/feedback-service';
 import { Student } from './models/student';
 import { StudentRepository } from './repository/student-repository';
-import { AssessmentRepository } from './repository/assessment-repository';
+
 import readline from 'node:readline';
 import { stdin as input, stdout as output } from 'node:process';
 import chalk from 'chalk';
-const clear = require('clear');
-const figlet = require('figlet');
+import clear from 'clear';
+import figlet from 'figlet';
 
 clear();
 console.log(
 	chalk.red(
-		figlet.textSync('ACER-Report', { horizontalLayout: 'half'})
+		figlet.textSync('ACER-Report')
 	)
 );
 const repository = new StudentRepository("students");
