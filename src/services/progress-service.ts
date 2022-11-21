@@ -32,7 +32,9 @@ export class ProgressWorker {
 	private outputReportData(studentResponses: StudentResponse[], attempts: number, student: Student): void {
 		let studentLastName = student.lastName ? student.lastName : "lastname";
 		let studentFirstName = student.firstName ? student.firstName : "firstname";
-		var responseString = "\n" + studentFirstName + " " + studentLastName + " has completed " + studentResponses[0].assessment?.name + " " + attempts + " times in total. Date and raw score given below:\n\n";
+		let assessmentName = studentResponses[0].assessment ? studentResponses[0].assessment.name : "-";
+		
+		var responseString = "\n" + studentFirstName + " " + studentLastName + " has completed " + assessmentName + " " + attempts + " times in total. Date and raw score given below:\n\n";
 		var detailStrings: string[] = [];
 		for(let response of studentResponses) {
 			var responseStringDetail = "Date: " + response.completed + ", Raw Score: " + response.results.rawScore + " out of " + response.responses.length;
