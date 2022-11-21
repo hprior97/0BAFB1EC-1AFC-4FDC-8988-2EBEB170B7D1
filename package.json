@@ -1,4 +1,8 @@
 {
+  "main": "./lib/index.js",
+  "bin": {
+    "acerReport": "./lib/index.js"
+  },
   "dependencies": {
     "chalk-cli": "^5.0.0",
     "clear": "^0.1.0",
