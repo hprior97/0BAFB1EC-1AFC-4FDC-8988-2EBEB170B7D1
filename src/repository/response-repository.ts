@@ -49,7 +49,8 @@ export class ResponseRepository extends BaseRepository<StudentResponse> {
 			assessments.push(assessment);
 		}
 		
-		let mapFunction = (value: StudentResponse) => {
+		//Map the assessment values into the StudentResponse 
+		let matchAssessmentsToResponse = (value: StudentResponse) => {
 			let assessment = assessments.find(obj => {
 				return obj.id === value.assessmentId;
 			});
@@ -58,7 +59,7 @@ export class ResponseRepository extends BaseRepository<StudentResponse> {
 			return newValue;
 		}
 		
-		let mappedValues = completedResponses.map(mapFunction);
+		let mappedValues = completedResponses.map(matchAssessmentsToResponse);
 		
 		return mappedValues;
 	}
