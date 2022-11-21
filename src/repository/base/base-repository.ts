@@ -35,8 +35,10 @@ export abstract class BaseRepository<T> implements Read<T> {
 	}
 	
 	
-    findWithID(id: string): T {
-        throw new Error('Method not implemented.');
+    findWithID(itemID: string): T {
+        return this._collection.find(obj => {
+			return obj.id === itemID;
+		})
     }
 	
 }
