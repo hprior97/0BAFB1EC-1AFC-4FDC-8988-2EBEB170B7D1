@@ -39,6 +39,10 @@ At the time of publishing, the `Diagnostic` Report is not yet available.
 
 * Repository design allows for easy improvements to include more advanced, type specific data operations where necessary, or broader data operations through the base-repo should we need them. Subclass stubs are in place without these potential future methods in a couple of instances. 
 
+## Fixes 🔨
+
+* Replaced definite assignment assertions in FeedbackService.outputReportData() to more gracefully handle potentially undefined data. 
+
 
 ## Contact 📇
 

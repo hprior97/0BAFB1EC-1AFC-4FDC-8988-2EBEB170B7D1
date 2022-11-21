@@ -45,10 +45,17 @@ export class FeedbackService {
 		
 		//loop through the incorrect responses and output the data
 		for(let incorrectQuestion of feedbackData.incorrectQuestions) {
+			//We need to unwrap these optionals and gracefully handle the potential of them being undefined. 
+			//Definite assignment assertion would cause a crash.
+			let userChoiceLabel = incorrectQuestion.userResponse?.userChoice?.label === undefined ? "Unknown Label" : incorrectQuestion.userResponse.userChoice.label;
+			let userChoiceValue = incorrectQuestion.userResponse?.userChoice?.value === undefined? "Unknown Value" : incorrectQuestion.userResponse.userChoice.value;
+			let correctChoiceLabel = incorrectQuestion.userResponse?.correctChoice?.label === undefined ?  "Unknown Label" : incorrectQuestion.userResponse.correctChoice.label;
+			let correctChoiceValue = incorrectQuestion.userResponse?.correctChoice?.value === undefined ? "Unknown Value" : incorrectQuestion.userResponse.correctChoice.value;
+			
 			var questionStrings: string[] = [];
 			questionStrings.push("Question: " + incorrectQuestion.stem);
-			questionStrings.push("Your answer: " + incorrectQuestion.userResponse!.userChoice!.label + " with value " + incorrectQuestion.userResponse!.userChoice!.value);
-			questionStrings.push("Right answer: " + incorrectQuestion.userResponse!.correctChoice!.label + " with value " + incorrectQuestion.userResponse!.correctChoice!.value);
+			questionStrings.push("Your answer: " + userChoiceLabel + " with value " + userChoiceValue);
+			questionStrings.push("Right answer: " + correctChoiceLabel + " with value " + correctChoiceValue);
 			questionStrings.push("Hint: " + incorrectQuestion.config.hint + "\n");
 			let questionDetailString = questionStrings.join("\n");
 			console.log(questionDetailString);
