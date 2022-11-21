@@ -27,11 +27,11 @@ export class ResponseRepository extends BaseRepository<StudentResponse> {
 				});
 			}
 		} 
-		
 	}
 	
 	findStudentResponsesWithAssessmentData(studentID: string): StudentResponse[] {
 		let assessmentRepository = new AssessmentRepository("assessments");
+		
 		//find the completed responses
 		let completedResponses = this.findStudentResponses(studentID, 1);
 		
@@ -59,9 +59,7 @@ export class ResponseRepository extends BaseRepository<StudentResponse> {
 			return newValue;
 		}
 		
-		let mappedValues = completedResponses.map(matchAssessmentsToResponse);
-		
-		return mappedValues;
+		return completedResponses.map(matchAssessmentsToResponse);
 	}
 	
 }
