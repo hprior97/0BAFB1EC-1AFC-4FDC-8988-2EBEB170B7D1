@@ -13,6 +13,8 @@
     "test": "jasmine"
   },
   "dependencies": {
+    "@types/clear": "^0.1.2",
+    "@types/figlet": "^1.5.5",
     "chalk-cli": "^5.0.0",
     "clear": "^0.1.0",
     "figlet": "^1.5.2"
