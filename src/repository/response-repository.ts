@@ -54,8 +54,8 @@ export class ResponseRepository extends BaseRepository<StudentResponse> {
 			let assessment = assessments.find(obj => {
 				return obj.id === value.assessmentId;
 			});
-			let newValue = {...value};
-			newValue.assessment = assessment;
+			let newValue = new StudentResponse(value.id, value.assessmentId, value.assigned, value.started, value.student, value.responses, value.results, value.completed, assessment);
+			
 			return newValue;
 		}
 		
